@@ -1,0 +1,18 @@
+---
+- name: Learning when examples
+  hosts: futurama:!farnsworth
+  gather_facts: yes
+
+  vars:
+          Bool_var:  False
+        
+  tasks:
+          - name: give Bool_var = True
+            debug:
+                    msg: "It would appear as if bool_var was given a value of TRUE"
+            when: Bool_var|bool
+
+          - name: given Bool_var = False
+            debug:
+                    msg: "DON'T PANIC!"
+            when: not Bool_var|bool   

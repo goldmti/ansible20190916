@@ -1,0 +1,27 @@
+---
+- name: Our first play
+  hosts: futurama
+  # become: yes
+
+  tasks:
+          - name: Learning more about fetch mod
+            fetch:
+                    src: secondfloor.txt
+                    dest: /tmp/prefix-{{ansible_hostname}} 
+
+
+          
+
+
+  
+
+
+
+
+
+
+
+
+
+
+

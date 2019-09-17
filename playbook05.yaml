@@ -1,0 +1,25 @@
+---
+- name: Just a little bit on loops
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+          myList:
+                  - "A hyphen is an entry in a list"
+                  - "THs would be the second item on the list"
+                  - "Number 3"
+
+  tasks:
+          - name: Demo my little loop
+            debug:
+                   msg: "The debug module allows us to display to the screen: {{ item }}"
+            loop: "{{ myList }}"
+
+          - name: Demo a second tiny loop
+            debug:
+                    msg: "All modules can also have LOCAL var information: {{ item }}"
+            loop: "{{ myOtherList }}"
+            vars:
+                    myOtherList:
+                            - Example of local info
+                            - Only available to this stack

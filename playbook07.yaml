@@ -1,0 +1,9 @@
+---
+- name: Learning to download clous images to be used in a cloud
+  hosts: futurama&ubuntu
+
+  unarchive:
+              src: /tmp/
+              dest: /
+
+

@@ -1,0 +1,24 @@
+---
+ - name: Get files from url
+   hosts: futurama
+   gather_facts: yes
+   # become: no
+   vars:
+           dir: "/tmp/images"
+
+   tasks:
+           - name: create directory
+             file:
+                     path: "{{ dir }}"
+                     state: directory
+           - name: get file from url
+             get_url:
+                     url: http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-1xc.tar.gz
+                     dest: "{{ dir }}"           
+
+           - name: Unarchive
+             unarchive:
+                     src: "{{ dir }}/cirros-0.4.0-x86_64-1xc.tar.gz"
+                     dest: "{{ dir }}"
+                     remote_src: yes
+             become: yes

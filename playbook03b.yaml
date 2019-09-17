@@ -1,0 +1,27 @@
+---
+- name: Our first play
+  hosts: futurama
+  # become: yes
+
+  tasks:
+          - name: Learning more about copy mod
+            copy:
+                    content: "Learning at 145 Chubb Way"
+                    dest: /tmp/secondfloor.txt
+
+
+          - name: Install steam locomotive on ALL machines
+            apt: 
+                    name: sl
+                    state: present          
+            become: yes
+            when: ansible_distribution == "Ubuntu"
+
+          - name: Install steam locomotive on ALL CENTOS machines
+            yum:
+                    name: sl
+                    state: present
+            when: ansible_distribution == "Centos"        
+
+
+
